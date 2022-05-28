@@ -1,0 +1,12 @@
+num_costales_cemento_kg = int(input ("Número de costales de cemento (kg): "))
+num_costales_yeso_kg = int(input ("Número de costales de yeso (kg): "))
+
+peso_total_kg = num_costales_cemento_kg*40 + num_costales_yeso_kg*30
+
+capacidad_carga_maxima_kg = 3254
+capacidad_carga_media_kg = (capacidad_carga_maxima_kg * 50 ) / 100
+
+print("El peso total en kg es:",peso_total_kg)
+
+envio = peso_total_kg > capacidad_carga_media_kg and peso_total_kg < capacidad_carga_maxima_kg
+print("¿Se puede realizar el envío?:", envio)
