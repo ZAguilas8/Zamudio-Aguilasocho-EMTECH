@@ -1,0 +1,25 @@
+municipios = []
+habitantes = []
+
+nombre_municipio = str(input ("Ingrese el nombre del municipio: "))
+municipios.append (nombre_municipio)
+numero_habitantes = int(input ("Ingrese el número de habitantes: "))
+habitantes.append (numero_habitantes)
+
+nombre_municipio = str(input ("Ingrese el nombre del municipio: "))
+municipios.append (nombre_municipio)
+numero_habitantes = int(input ("Ingrese el número de habitantes: "))
+habitantes.append (numero_habitantes)
+
+nombre_municipio = str(input ("Ingrese el nombre del municipio: "))
+municipios.append (nombre_municipio)
+numero_habitantes = int(input ("Ingrese el número de habitantes: "))
+habitantes.append (numero_habitantes)
+
+total_habitantes = sum(habitantes)
+promedio_habitantes = total_habitantes/len(habitantes)
+
+
+print("El total de habitantes es: ",total_habitantes)
+print("El promedio de habitantes es: ", promedio_habitantes)
+
