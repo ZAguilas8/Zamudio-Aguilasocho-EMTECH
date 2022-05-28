@@ -1,0 +1,18 @@
+nombre_estado = "Sinaloa"
+superficie_kilometros = 57365
+clima = "Cálido, Subhúmedo, Seco, Semiseco"
+temperatura_media_anual_grados_centigrados = 25.45
+precipitacion_anual_promedio_milimetros = 790.1
+poblacion_mujeres = 1532128
+poblacion_hombres = 1494815
+municipios_mayor_porcentaje_hab_2020 = [["Culiacán", 33.15], ["Mazatlán", 16.57]]
+
+poblacion_total = print("La población total entre hombres y mujeres es:", poblacion_mujeres + poblacion_hombres)
+
+porcentaje_total_poblacion_municipios = municipios_mayor_porcentaje_hab_2020[0][1] + municipios_mayor_porcentaje_hab_2020 [1][1]
+
+print("El porcentaje total de la población entre Culiacán y Mazatlán es:", str(porcentaje_total_poblacion_municipios), "%")
+
+print("La temperatura media anual es:",str(temperatura_media_anual_grados_centigrados) + "°C")
+tipos_de_clima = print("Los tipos de clima son:", str(clima))
+
