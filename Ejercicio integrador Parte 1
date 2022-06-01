@@ -1,0 +1,73 @@
+cajas_a_vender = int(input ("Número de cajas a vender:"))
+id_producto = int(input ("ID del producto:"))
+
+
+productos = [[1, "Maíz grano", 285.55],
+             [2, "Pepino", 334.72], 
+             [3, "Tomate verde", 129.00]]
+
+
+venta_productos = [[2, 122], [1, 89], [1, 22], 
+                   [3, 48], [1, 75],[3, 322],
+                   [2, 95],[1, 148],[1, 83],
+                   [3, 100]]
+
+
+def suma_columnas (venta_productos): 
+     return [sum(i) for i in zip(*venta_productos)] 
+
+ventas_diarias = suma_columnas (venta_productos)[1]
+ventas_totales = ventas_diarias + cajas_a_vender
+descuento = 1500 < ventas_totales
+
+
+if id_producto == productos[0][0] and cajas_a_vender <= 100: 
+  print("El producto es:",productos[0][1])
+  print("El precio por caja es: $",productos[0][2])
+  print ("Aplica descuento del 20%:", descuento)
+  total= productos[0][2]*cajas_a_vender+1500
+
+elif id_producto == productos[0][0] and cajas_a_vender > 100:
+  print("El producto es:",productos[0][1])
+  print("El precio por caja es: $",productos[0][2])
+  print ("Aplica descuento del 20%:", descuento)
+  total= productos[0][2]*cajas_a_vender
+
+  
+if id_producto == productos[1][0] and cajas_a_vender <= 100: 
+  print("El producto es:",productos[1][1])
+  print("El precio por caja es: $",productos[1][2])
+  print ("Aplica descuento del 20%:", descuento)
+  total= productos[1][2]*cajas_a_vender+1500 
+
+elif id_producto == productos[1][0] and cajas_a_vender > 100:
+  print("El producto es:",productos[1][1])
+  print("El precio por caja es: $",productos[1][2])
+  print ("Aplica descuento del 20%:", descuento)
+  total= productos[1][2]*cajas_a_vender
+
+
+if id_producto == productos [2][0] and cajas_a_vender <= 100:
+  print("El producto es:",productos[2][1])
+  print("El precio por caja es: $",productos[2][2])
+  print ("Aplica descuento del 20%:", descuento)
+  total= productos[2][2]*cajas_a_vender+1500 
+
+elif id_producto == productos [2][0] and cajas_a_vender > 100:
+  print("El producto es:",productos[2][1])
+  print("El precio por caja es: $",productos[2][2])
+  print ("Aplica descuento del 20%:", descuento)
+  total= productos[2][2]*cajas_a_vender
+
+
+if descuento == True:
+  descuento = (total * 20) / 100
+  total = round (total - descuento, 2)
+  print("El costo total a pagar: $",total)  
+else:
+  print("El costo total a pagar: $",round (total,2))
+
+
+if id_producto != 1 and id_producto != 2 and id_producto != 3:
+  print ("El ID del producto ingresado no existe ")
+  
