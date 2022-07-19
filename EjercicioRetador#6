@@ -1,0 +1,50 @@
+pasajeros =[]
+
+while True:
+  print("\nIngrese los siguientes datos del pasajero\n")
+  nombre= input("Nombre: ")
+  
+  if nombre.lower() != "x":
+    edad = int(input ("Edad: "))
+    destino = input("IATA del destino: ").lower()
+    cliente = [nombre, edad, destino]
+    pasajeros.append(tuple(cliente))
+
+    access = True
+    
+  else: 
+    
+# Filtrar los destinos de los pasajeros para crear una lista que contenga unicamente los nombres (sin repetir) de los destinos
+    lista_destinos = []
+    destinos = []
+    for i in pasajeros:
+      lista_destinos.append(i[2])
+      for x in lista_destinos:
+        if x not in destinos:
+          destinos.append(x)
+
+
+#Contabilizar el total de pasajeros por destino y la edad promedio
+    lista_destino_pasajeros = []
+    lista_destino_edad = []
+    for i in destinos:
+      contador_pasajeros = 0
+      contador_edad = 0 
+      promedio_edad = 0
+      for x in pasajeros:
+        if i == x[2]:
+          contador_pasajeros += 1
+          contador_edad += x[1]
+          promedio_edad = (contador_edad / contador_pasajeros) 
+      lista_destino_pasajeros.append((i,contador_pasajeros))
+      lista_destino_edad.append((i,promedio_edad))
+
+#Ordenar de menor a mayor la lista de tuplas del número de pasajeros 
+      lista_destino_pasajeros.sort(key = lambda pasajeros: pasajeros[1], reverse=True)
+
+     
+    print ("\nDetalles de vuelos: ", lista_destino_pasajeros)
+    print ("Edad promedio por vuelo: ", lista_destino_edad)
+    
+    break
+  
