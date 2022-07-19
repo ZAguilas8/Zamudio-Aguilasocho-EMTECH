@@ -1,0 +1,43 @@
+pasajeros =[]
+
+
+while True:
+  opcionMenu = input ("Seleccionar una opción del siguiente menú: \n(1) Añadir cliente \n(2) Listar todos los clientes \n(3) Listar clientes preferentes \n(4) Salir. \n")
+
+
+  if opcionMenu=="1":
+    ine_ife = input ("Ingresa el ID del INE: ")
+    nombre = input ("Ingresa el Nombre: ")
+    edad = input ("Ingresa la edad: ")
+    destino = input("Ingresa el destino: ")
+    preferente = input ("Cliente preferente (Si/No): ").lower()
+
+    cliente = ine_ife, nombre, edad, destino, preferente
+    #convertimos la información del cliente a un diccionario
+    diccionario_pasajeros = dict(zip(['ine','nombre','edad','destino','preferente'], cliente))
+    #agregamos el diccionario a una lista
+    pasajeros.append(diccionario_pasajeros)
+   
+    input("\nPulse una tecla para continuar")
+    
+  elif opcionMenu=="2":
+    #acceder a cada elemento de la lista e imprimir ID del INE y nombre de todos los pasajeros 
+    for elem in pasajeros:
+      print ("ID del INE:",elem['ine'],
+             " Nombre:",elem['nombre'])
+  
+    input("\npulsa una tecla para continuar")
+    
+  elif opcionMenu=="3":
+    #acceder a cada elemento de la lista e imprimir ID del INE y nombre de todos los pasajeros que SI son preferentes, cabe mencionar que se compara en minusculas porque la variable preferente tiene el método .lower()
+    for elem in pasajeros:
+      if elem['preferente'] == "si":
+        print ("ID del INE:",elem['ine'],
+             " Nombre:",elem['nombre'])
+        
+    input("\npulsa una tecla para continuar")
+    
+  elif opcionMenu=="4":
+    break
+  else:
+    input("Favor de ingresar una opción correcta. \npulsa una tecla para continuar")
