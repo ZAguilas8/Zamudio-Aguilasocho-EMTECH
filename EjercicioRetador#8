@@ -1,0 +1,100 @@
+
+clientes={45471:["Luis Perez",45,"BJX", True], 8944411:["Fernanda Garcia",25,"JAL", True], 15223:["Alejandra Ortiz",33,"JDL", True]}
+
+
+def mostrar_menu(opciones):
+    print("Seleccionar una opción del siguiente menú:")
+    for clave in sorted(opciones):
+        print(f' {clave}) {opciones[clave][0]}')
+
+
+def leer_opcion(opciones):
+    while (a := input('\n Opción: ')) not in opciones:
+        print("Favor de ingresar una opción correcta. \npulsa una tecla para continuar")
+    return a
+
+
+def ejecutar_opcion(opcion, opciones):
+    opciones[opcion][1]()
+
+
+def generar_menu(opciones, opcion_salida):
+    opcion = None
+    while opcion != opcion_salida:
+        mostrar_menu(opciones)
+        opcion = leer_opcion(opciones)
+        ejecutar_opcion(opcion, opciones)
+        print()
+
+
+def menu_principal():
+    opciones = {
+        '1': ("Añadir nuevos clientes", añadir_clientes),
+        '2': ("Listar todos los clientes", listar_clientes),
+        '3': ("Listar clientes preferentes", clientes_preferentes),
+        '4': ("Eliminar un cliente mediante ID del INE", eliminar_cliente),
+        '5': ("Edad promedio de todos los clientes", edad_promedio_clientes),
+        '6': ("Edad promedio de clientes preferentes", edad_promedio_preferentes),
+        '7': ("Salir", salir)
+    }
+
+    generar_menu(opciones,"7")
+
+
+def añadir_clientes():
+  ine_ife = input ("Ingresa el ID del INE: ")
+  nombre = input ("Ingresa el Nombre: ")
+  edad = input ("Ingresa la edad: ")
+  destino = input("Ingresa el destino: ")
+  preferente = input ("Cliente preferente (True/False): ").lower()
+
+  nuevo_cliente = clientes.setdefault(ine_ife ,[nombre,edad,destino,preferente])
+
+
+def listar_clientes():
+  for elem in clientes:
+    print (f"ID del INE: {elem} EDAD: {clientes[elem][1]}")
+
+        
+def clientes_preferentes():
+  lista = []
+  for elem in clientes:   
+    if clientes[elem][-1] == "true" or clientes[elem][-1] == True:
+      print (f"ID del INE: {elem} Nombre: {clientes[elem][0]}")
+  return lista 
+
+
+def eliminar_cliente():
+  ine_ife = int (input ("Ingresa el ID del INE del cliente a ELIMINAR: "))
+  print(clientes.pop(ine_ife, None))
+
+  
+def edad_promedio_clientes():
+  suma = 0
+  for elem in clientes:
+    edades = clientes [elem][1]
+    suma += edades
+  promedio = suma / len(clientes)
+  print ("La edad promedio de los clientes es: ", promedio)
+  
+def edad_promedio_preferentes():
+  lista = []
+  for elem in clientes:   
+    if clientes[elem][-1] == "true" or clientes[elem][-1] == True:
+      lista.append([elem,clientes[elem][0],clientes[elem][1]])
+  
+  suma = 0
+  for edad in lista:
+    edades = int(edad[2])
+    suma += edades
+  promedio = suma / len(lista)
+  print ("La edad promedio de los clientes preferentes es: ", promedio)
+
+
+def salir():
+    print('-Fin Programa-')
+
+
+if __name__ == "__main__":
+    menu_principal()
+
