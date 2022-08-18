@@ -1,0 +1,53 @@
+import csv
+
+
+totales = []
+prom_uno_tres = []
+lista_vuelos_sinaloa = []
+ordenados_pasajeros= []
+resultado_uno_tres = []
+
+
+with open ("aeropuertos_pasajeros.csv","r") as archivo_csv:
+    lector = csv.reader(archivo_csv)
+    #5 aeropuertos que tienen mayor cantidad de pasajeros que desean viajar a Sin
+    for l in lector:
+        ordenados_pasajeros = sorted(lector, key=lambda lector: int(lector[3]))
+    print("\n5 aeropuetos que tienen mayor cantidad de pasajeros que desean viajar a Sinaloa: ",ordenados_pasajeros[-5:])
+    
+    
+with open ("aeropuertos_pasajeros.csv","r") as archivo_csv:
+    lector = csv.reader(archivo_csv)   
+    #El promedio de los pasajeros considerando todos los aeropuertos
+    for linea in lector:
+          if linea[3]== "Pasajeros":
+              continue
+          totales.append(int(linea[3]))
+    print ("\nEl promedio de los pasajeros considerando todos los aeropuertos es: ",sum(totales)/len(totales))
+    
+      
+with open ("aeropuertos_pasajeros.csv","r") as archivo_csv:
+    lector = csv.reader(archivo_csv)    
+    #5 aeropuertos con menos vuelos hacia Sin.
+    for linea in lector:
+        if linea [0]=="Estado" or linea[4] == "0":
+            continue
+        lista_vuelos_sinaloa.append(linea)
+        ordenados_vuelos = sorted (lista_vuelos_sinaloa, key=lambda lista_vuelos_sinaloa: int(lista_vuelos_sinaloa[4]))
+    print ("\n5 aeropuertos con menos vuelos hacia Sinaloa: ",ordenados_vuelos[:5])
+   
+    
+with open ("resultados_integrador2.csv", "w", newline="") as archivo:
+    #Escribir en un archivo CSV los resultados obtenidos en los puntos 1 y 3
+    escritor = csv.writer(archivo)
+    resultado_uno_tres = (ordenados_pasajeros[-5:])+(ordenados_vuelos[:5])
+    escritor.writerows(resultado_uno_tres)  
+   
+
+with open ("resultados_integrador2.csv","r") as archivo_csv:
+    lector = csv.reader(archivo_csv)    
+    #Promedio de los pasajeros de los aeropuertos obtenidos según los resultados de los puntos 1 y 3
+    for linea in lector:
+        prom_uno_tres.append(int(linea[3]))
+    print ("\nEl promedio de los pasajeros según los resultados de los puntos (1y3) es: ",sum(prom_uno_tres)/len(prom_uno_tres))
+    
