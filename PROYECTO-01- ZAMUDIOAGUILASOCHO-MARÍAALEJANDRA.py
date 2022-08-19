@@ -46,10 +46,6 @@ with open ("synergy_logistics_database.csv","r") as archivo_csv:
     #Srive para orenar las 10 rutas más demandadas          
     for elementos in lista_rutas_cantidad:
         ordenados_rutas = sorted(lista_rutas_cantidad, key=lambda lista_rutas_cantidad: int(lista_rutas_cantidad["cantidad"]), reverse=True)
-    #CAMBIARRRRRR A 10, DEBEN SER LAS DIEZZZZZZZZ RUTAS NY NO 2 DOS 
-#CAMBIAR
-#CAMBIAR
-#CAMBIAR 2 POR 10   
     print(ordenados_rutas[:10])
 
 
